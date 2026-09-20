@@ -1,0 +1,12 @@
+{
+  "name": "calculadora-pixel-server",
+  "version": "1.0.0",
+  "description": "API REST para operaciones elementales de la Calculadora Pixel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

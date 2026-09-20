@@ -1,0 +1,202 @@
+:root {
+  --bg: #0d0f18;
+  --panel: #16192a;
+  --panel-borde: #3a3f5c;
+  --pantalla-bg: #05140d;
+  --pantalla-texto: #6bffb0;
+  --pantalla-glow: rgba(107, 255, 176, 0.55);
+  --numero-bg: #262b45;
+  --numero-bg-hover: #323863;
+  --operador-bg: #ff3d81;
+  --operador-bg-hover: #ff6aa0;
+  --igual-bg: #4de3ff;
+  --igual-bg-hover: #7deaff;
+  --funcion-bg: #4a4f73;
+  --funcion-bg-hover: #5c628f;
+  --error: #ff5c5c;
+  --sombra-pixel: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: 'Press Start 2P', monospace;
+  color: #e8e8f0;
+  padding: 20px;
+}
+
+.arcade-cabinet {
+  width: 100%;
+  max-width: 360px;
+  background: var(--panel);
+  border: 4px solid var(--panel-borde);
+  box-shadow:
+    0 0 0 4px var(--sombra-pixel),
+    8px 8px 0 0 var(--sombra-pixel);
+  padding: 20px 16px;
+  border-radius: 4px;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  color: #ffffff;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.titulo span {
+  display: block;
+  color: var(--operador-bg);
+}
+
+.pantalla-marco {
+  background: #000;
+  border: 4px solid var(--panel-borde);
+  padding: 6px;
+  box-shadow: inset 0 0 0 2px #000;
+}
+
+.pantalla {
+  background: var(--pantalla-bg);
+  padding: 16px 12px;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.display-historial {
+  font-size: 10px;
+  color: #3f8f6c;
+  min-height: 12px;
+  text-align: right;
+  word-break: break-all;
+}
+
+.display-actual {
+  font-size: 24px;
+  text-align: right;
+  color: var(--pantalla-texto);
+  text-shadow: 0 0 8px var(--pantalla-glow);
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.mensaje-error {
+  min-height: 14px;
+  font-size: 9px;
+  color: var(--error);
+  text-align: center;
+  margin: 8px 0 0;
+}
+
+.teclado {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.tecla {
+  font-family: inherit;
+  font-size: 13px;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  cursor: pointer;
+  background: var(--numero-bg);
+  box-shadow:
+    inset -3px -3px 0 rgba(0, 0, 0, 0.35),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.08),
+    3px 3px 0 0 #000;
+  transition: transform 0.05s ease;
+}
+
+.tecla:active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset -3px -3px 0 rgba(0, 0, 0, 0.35),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.08),
+    1px 1px 0 0 #000;
+}
+
+.tecla-numero {
+  background: var(--numero-bg);
+}
+.tecla-numero:hover {
+  background: var(--numero-bg-hover);
+}
+
+.tecla-cero {
+  grid-column: span 2;
+}
+
+.tecla-operador {
+  background: var(--operador-bg);
+}
+.tecla-operador:hover {
+  background: var(--operador-bg-hover);
+}
+
+.tecla-funcion {
+  background: var(--funcion-bg);
+  font-size: 11px;
+}
+.tecla-funcion:hover {
+  background: var(--funcion-bg-hover);
+}
+
+.tecla-igual {
+  grid-column: span 4;
+  background: var(--igual-bg);
+  color: #06131a;
+  font-size: 15px;
+}
+.tecla-igual:hover {
+  background: var(--igual-bg-hover);
+}
+
+.pie {
+  text-align: center;
+  font-size: 8px;
+  color: #6b708f;
+  margin: 16px 0 0;
+}
+
+#estado-api.ok {
+  color: #6bffb0;
+}
+#estado-api.error {
+  color: var(--error);
+}
+
+@media (max-width: 380px) {
+  .display-actual {
+    font-size: 20px;
+  }
+  .tecla {
+    font-size: 12px;
+    padding: 12px 0;
+  }
+}
